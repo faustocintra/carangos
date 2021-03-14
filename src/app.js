@@ -20,7 +20,7 @@ const sequelize = require('./sequelize');
 
 const app = express(feathers());
 
-const automovel = require('./services/automovel/automovel.service')
+//const automovel = require('./services/automovel/automovel.service')
 
 // Load app configuration
 app.configure(configuration());
@@ -53,8 +53,8 @@ app.configure(channels);
 app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
-app.use('automovel', automovel);
-
 app.hooks(appHooks);
+
+//app.use('automovel', automovel);
 
 module.exports = app;

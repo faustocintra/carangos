@@ -1,8 +1,21 @@
+const setCors = () => {
+  return async context => {
+    context.app.use(
+      function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        console.log('--- TRYED TO ACTIVATE CORS ---')
+        next();
+      }
+    )
 
+    return context;
+  }
+}
 
 module.exports = {
   before: {
-    all: [],
+    all: [  ],
     find: [],
     get: [],
     create: [],
@@ -12,7 +25,7 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [setCors()],
     find: [],
     get: [],
     create: [],
